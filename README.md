@@ -7,7 +7,7 @@
 If you enjoy this add-on or want individualized help, please consider supporting us:
 
 Support The AnKing via:
--**[Patreon](https://www.patreon.com/ankingmed)** 
--**[YouTube](https://www.youtube.com/theanking)**
--**[Website](https://www.ankingmed.com)**
--**[Instagram](https://www.instagram.com/ankingmed)**/**[Facebook](https://www.facebook.com/ankingmed)**
+* **[Patreon](https://www.patreon.com/ankingmed)** 
+* **[YouTube](https://www.youtube.com/theanking)**
+* **[Website](https://www.ankingmed.com)**
+* **[Instagram](https://www.instagram.com/ankingmed)**/**[Facebook](https://www.facebook.com/ankingmed)**
