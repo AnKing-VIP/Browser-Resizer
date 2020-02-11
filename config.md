@@ -8,3 +8,11 @@ These settings do not require a restart to apply.
 (all decimals must be formatted #.#)
 
 ---
+
+Updated by [The AnKing](https://www.ankingmed.com) with help from [Glutanimate](https://www.glutanimate.com). 
+
+If you enjoy this add-on or want individualized help, please consider supporting us:
+
+Support The AnKing via **[Patreon](https://www.patreon.com/ankingmed)**, **[YouTube](https://www.youtube.com/theanking)** and **[Instagram](https://www.instagram.com/ankingmed)**/**[Facebook](https://www.facebook.com/ankingmed)**
+
+Support Glutanimate via **[Patreon](https://www.patreon.com/glutanimate)**

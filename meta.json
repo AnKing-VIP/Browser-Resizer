@@ -1,1 +1,1 @@
-{"config": {"reduce_row_height_by": 2, "sidebar_margin": 0.8}}
+{"name": "Browser Resizer", "mod": 1581122387, "config": {"reduce_row_height_by": 2, "sidebar_margin": 2}, "disabled": false, "conflicts": [], "max_point_version": 20, "min_point_version": 0, "branch_index": 0}

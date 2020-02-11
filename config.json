@@ -1,4 +1,5 @@
 {
-    "sidebar_margin": 2,
-    "reduce_row_height_by": 0
+    "reduce_row_height_by": 2,    
+    "sidebar_margin": 0.8
+
 }
