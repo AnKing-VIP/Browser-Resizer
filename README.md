@@ -4,7 +4,8 @@
  See this link for Ankiweb download and details: https://ankiweb.net/shared/info/1435775540
  
 
-If you enjoy this add-on or want individualized help, please consider supporting us:
+
+_**If you enjoy this add-on or want individualized help, please consider supporting us:**_
 
 Support The AnKing via:
 * **[Patreon](https://www.patreon.com/ankingmed)** 
