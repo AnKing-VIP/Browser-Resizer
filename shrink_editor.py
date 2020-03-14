@@ -36,6 +36,18 @@ def gc(arg="", fail=False):
             return conf
     return fail
 
+
+def dc(arg="", fail=""):
+    addon = mw.addonManager.addonFromModule(__name__)
+    conf = mw.addonManager.addonConfigDefaults(addon)
+    if conf:
+        if arg:
+            return conf.get(arg, fail)
+        else:
+            return conf
+    return fail
+
+
 css_folder_for_anki_version = {
     "21": "21",
     "22": "21",  # for Anki version 22 use the contents of the folder 21 
