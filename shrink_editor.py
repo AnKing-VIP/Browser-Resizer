@@ -49,10 +49,8 @@ def dc(arg="", fail=""):
 
 
 css_folder_for_anki_version = {
-    "21": "21",
-    "22": "21",  # for Anki version 22 use the contents of the folder 21 
-}
-js_folder_for_anki_version = {
+    "22": "22",
+    "23": "22",  # example: for Anki version 23 use the contents of the folder 22 
 }
 
 
