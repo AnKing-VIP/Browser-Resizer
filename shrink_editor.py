@@ -8,6 +8,15 @@
 #            Ankitects Pty Ltd and contributors
 # License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html 
 
+
+
+# This is a simple solution without the new style hooks for basic changes of the style in the editor:
+# from aqt import editor
+# editor_style = """
+# <style>
+# </style>"""
+# editor._html = editor_style + editor._html
+
 import os
 
 from anki.utils import pointVersion
