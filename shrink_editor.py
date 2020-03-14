@@ -1,12 +1,14 @@
 # Copyright: ijgnd
+#            Ankitects Pty Ltd and contributors
 # Modified by: The AnKing 
+#
+# License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html 
+
+
 ### Website: https://www.ankingmed.com  (Includes 40+ recommended add-ons)
 ### Youtube: https://www.youtube.com/theanking
 ### Instagram/Facebook: @ankingmed
 ### Patreon: https://www.patreon.com/ankingmed (Get individualized help)
-#
-#            Ankitects Pty Ltd and contributors
-# License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html 
 
 
 
@@ -16,6 +18,8 @@
 # <style>
 # </style>"""
 # editor._html = editor_style + editor._html
+
+
 
 import os
 
