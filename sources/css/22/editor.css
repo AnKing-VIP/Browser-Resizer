@@ -10,7 +10,7 @@
   padding-left: 3px; /*MODIFIED: see above*/
   padding-right: 3px; /*MODIFIED: see above*/
   overflow-wrap: break-word;
-  font-size:16px!important; /* MODIFIED: original was absent*/
+  font-size: editor field font size!important; /* MODIFIED: original was absent*/
 }
 
 .clearfix:after {
