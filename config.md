@@ -1,3 +1,15 @@
+<div style="vertical-align:middle;"><a href="https://www.ankingmed.com"><img src="../../addons21/1435775540/AnKing/AnKingSmall.png"></a><a href="https://www.ankingmed.com"><img src="../../addons21/1435775540/AnKing/TheAnKing.png"></a></div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/ankingmed"><img src="../../addons21/1435775540/AnKing/Facebook.jpg"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.instagram.com/ankingmed"><img src="../../addons21/1435775540/AnKing/Instagram.jpg"></a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.youtube.com/theanking"><img src="../../addons21/1435775540/AnKing/YouTube.jpg"></a>
+
+<a href="https://www.patreon.com/ankingmed"><img src="../../addons21/1435775540/AnKing/Patreon.jpg"></a>
+
+---
+
+<div style="color: #4297F9;"><b>If you enjoy this add-on or want individualized Anki help, please consider supporting us!</b></div>
+
 ### Browser Resizing: Configuration
 
 The editor settings require a restart to apply.
