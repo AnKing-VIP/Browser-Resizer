@@ -1,6 +1,7 @@
 {
     "editor field font size": "16px",
     "editor_shrink": true,
+    "h3 margin bottom": 17,
     "reduce_row_height_by": 2,    
     "sidebar_margin": 1
 }
