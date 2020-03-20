@@ -16,6 +16,12 @@ from aqt import mw
 from aqt import gui_hooks
 from anki import version as anki_version
 
+#config settings
+def gc(arg, fail=False):
+    conf = mw.addonManager.getConfig(__name__)
+    if conf:
+        return conf.get(arg, fail)
+    return fail
 
 css_folder_for_anki_version = {
     "21": "21",
@@ -40,19 +46,27 @@ mycssfiles = [os.path.basename(f) for f in os.listdir(my_css_folder_absolute) if
 regex = r"(web.*)"
 mw.addonManager.setWebExports(__name__, regex)
 
+#file_to_open = editor 
+if gc("editor field font size") != "none":
+    fontset = "font-size:" + gc("editor field font size") + "!important;"
+else:    
+    fontset = ""
+
+
+#overwrite editor.css with user font size info
+with open(f"/{addon_path}/editor.css") as f: 
+    filecontent = f.read() 
+    completed = filecontent.format(fontsize = fontset)
+with open(f"/{addon_path}/web/css/{my_css_folder}/editor.css", "w") as o: 
+    o.write(completed) 
 
 def replace_css(web_content, context):
     for idx, filename in enumerate(web_content.css):
         if filename in mycssfiles:
             web_content.css[idx] = f"/_addons/{addonfoldername}/web/css/{my_css_folder}/{filename}"
 
-old_anki = tuple(int(i) for i in anki_version.split(".")) < (2, 1, 21)
 
-def gc(arg, fail=False):
-    conf = mw.addonManager.getConfig(__name__)
-    if conf:
-        return conf.get(arg, fail)
-    return fail
+old_anki = tuple(int(i) for i in anki_version.split(".")) < (2, 1, 22)
 
 if not old_anki and gc("editor_shrink"):                    
     gui_hooks.webview_will_set_content.append(replace_css)
