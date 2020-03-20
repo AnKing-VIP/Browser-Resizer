@@ -12,7 +12,7 @@
 
 ### Browser Resizing: Configuration
 
-The editor settings require a restart to apply.
+<div style="color:red;"><b>The editor settings require a restart to apply and will only work on Anki 2.1.22+.</b></div>
 
 - **editor field font size** _("#px" or "none")_ Force font size of all notes to this font size
 - **editor_shrink** _(true or false)_ Shrink the fields in the editor to make things more compact. This feature only works in Anki 2.1.21+ and requires a restart to apply.
@@ -23,7 +23,7 @@ The editor settings require a restart to apply.
 
 ---
 
-Updated by [The AnKing](https://www.ankingmed.com) with help from [Glutanimate](https://www.glutanimate.com). 
+Updated by [The AnKing](https://www.ankingmed.com) with help from [Glutanimate](https://www.glutanimate.com) and u/ijgnord. 
 
 If you enjoy this add-on or want individualized help, please consider supporting us:
 

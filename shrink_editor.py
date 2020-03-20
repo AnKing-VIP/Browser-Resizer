@@ -93,4 +93,8 @@ def replace_css(web_content, context):
     for idx, filename in enumerate(web_content.css):
         if filename in css_files_to_replace:
             web_content.css[idx] = f"/_addons/{addonfoldername}/web/css/{version_folder}/{filename}"
-gui_hooks.webview_will_set_content.append(replace_css)
+
+old_anki = tuple(int(i) for i in anki_version.split(".")) < (2, 1, 22)
+
+if not old_anki and gc("editor_shrink"):                    
+    gui_hooks.webview_will_set_content.append(replace_css)
