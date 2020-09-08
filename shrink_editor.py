@@ -54,7 +54,8 @@ def dc(arg="", fail=""):
 
 css_folder_for_anki_version = {
     "22": "22",
-    "23": "22",  # example: for Anki version 23 use the contents of the folder 22 
+    "23": "22",
+    "31": "31",  # example: for Anki version 23 use the contents of the folder 22 
 }
 
 

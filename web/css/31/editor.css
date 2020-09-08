@@ -1,7 +1,7 @@
 /* night-mode-specific colours */
 /* Copyright: Ankitects Pty Ltd and contributors
  * License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html */
-.field {
+ .field {
   border: 1px solid #aaa;
   background: white;
   color: black;
@@ -10,7 +10,7 @@
   padding-left: 3px; /*MODIFIED: see above*/
   padding-right: 3px; /*MODIFIED: see above*/
   overflow-wrap: break-word;
-  font-size: 16px!important; /* MODIFIED: original was absent*/
+  font-size: editor field font size!important; /* MODIFIED: original was absent*/
 }
 
 .clearfix:after {
@@ -64,12 +64,12 @@ button.linkb {
   background: transparent;
 }
 
-.linkb:disabled {
+button.linkb:disabled {
   opacity: 0.3;
   cursor: not-allowed;
 }
 
-.highlighted {
+button.highlighted {
   border-bottom: 3px solid #000;
 }
 
@@ -78,7 +78,7 @@ button.linkb {
 }
 
 .dupe {
-  background: #aa5555;
+  background: #ffaaaa;
 }
 
 .nightMode .field {
