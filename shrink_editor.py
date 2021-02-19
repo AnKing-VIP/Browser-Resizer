@@ -20,14 +20,14 @@
 # editor._html = editor_style + editor._html
 
 
-
 import os
-
-from anki.utils import pointVersion
 
 from aqt import mw
 from aqt import gui_hooks
 from anki import version as anki_version
+
+
+_, _, anki_point_version = anki_version.split(".")
 
 
 #config settings
@@ -59,8 +59,7 @@ css_folder_for_anki_version = {
 }
 
 
-v = pointVersion()
-if v in css_folder_for_anki_version:
+if anki_point_version in css_folder_for_anki_version:
     version_folder = css_folder_for_anki_version[v]
 else:  # for newer Anki versions try the latest version and hope for the best
     version_folder = css_folder_for_anki_version[max(css_folder_for_anki_version, key=int)]
@@ -95,7 +94,7 @@ def replace_css(web_content, context):
         if filename in css_files_to_replace:
             web_content.css[idx] = f"/_addons/{addonfoldername}/web/css/{version_folder}/{filename}"
 
-old_anki = tuple(int(i) for i in anki_version.split(".")) < (2, 1, 22)
 
-if not old_anki and gc("editor_shrink"):                    
+
+if anki_point_version >= 22 and gc("editor_shrink"):                    
     gui_hooks.webview_will_set_content.append(replace_css)
