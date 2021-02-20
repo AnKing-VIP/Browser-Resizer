@@ -21,6 +21,8 @@
 
 
 import os
+from pathlib import Path
+
 
 from aqt import mw
 from aqt import gui_hooks
@@ -64,6 +66,7 @@ for f in [os.path.basename(f) for f in os.listdir(source_absolute) if f.endswith
             if not newval:
                 newval = dc(val)
             filecontent = filecontent.replace(val, str(newval))
+    Path(web_absolute).mkdir(parents=True, exist_ok=True)
     with open(os.path.join(web_absolute, f), "w") as FO:
         FO.write(filecontent)
 
