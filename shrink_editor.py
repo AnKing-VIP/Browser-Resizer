@@ -31,7 +31,7 @@ from anki import version as anki_version
 from .config import dc, gc
 
 
-_, _, anki_point_version = anki_version.split(".")
+anki_point_version = int(anki_version.split(".")[2])
 
 
 css_folder_for_anki_version = {
