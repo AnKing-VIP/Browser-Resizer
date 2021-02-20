@@ -1,0 +1,12 @@
+#fields {
+    margin: 2px;
+}
+
+.field {
+    padding: 0px !important;
+    font-size: 12px !important;
+}
+
+.fname {
+    font-size: 12px;
+}
