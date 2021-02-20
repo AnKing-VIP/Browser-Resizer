@@ -1,69 +1,35 @@
-# This is a simple solution without the new style hooks for basic changes of the style in the editor:
-# from aqt import editor
-# editor_style = """
-# <style>
-# </style>"""
-# editor._html = editor_style + editor._html
+# note about changes for 2.1.41
+# For versions before 2.1.40 all relevant css changes were in the file editor.css
+# In 2.1.41 the editor.css is loaded from two files: editor.css and editable.css
+# see commits 7dc4b8818cb95a0c7043a3b2cd357551bc09bc88 and 61346cf1f70ececf7dafe0e8aa7f73571524b989 
+# editable.css is loaded from editor.js. I can't overwrite this editable.css and
+# patching editor.js looks complicated. So here I use a completely different approach and
+# adjust the css after the editor was loaded with js using jquery.
+# This approach should also work for older anki versions but I don't want to change
+# what's been working for over half a year.
 
 
 import os
 from pathlib import Path
 
-
 from aqt import mw
-from aqt import gui_hooks
-
-from .config import anki_point_version, dc, gc
-
-
-css_folder_for_anki_version = {
-    "22": "22",
-    "23": "22",
-}
-
-
-if anki_point_version in css_folder_for_anki_version:
-    version_folder = css_folder_for_anki_version[anki_point_version]
-else:  # for newer Anki versions try the latest version and hope for the best
-    version_folder = css_folder_for_anki_version[max(css_folder_for_anki_version, key=int)]
-
+from aqt.gui_hooks import (
+    editor_did_init,
+)
 
 addon_path = os.path.dirname(__file__)
 addonfoldername = os.path.basename(addon_path)
-source_absolute = os.path.join(addon_path, "sources", "css", version_folder)
-web_absolute = os.path.join(addon_path, "web", "css", version_folder)
+source_absolute = os.path.join(addon_path, "sources", "css", "41")
 
-regex = r"(web.*)"
+regex = r"(sources[/\\]css[/\\]41.*)"
 mw.addonManager.setWebExports(__name__, regex)
 
 
-# on startup: combine template files with config and write into webexports folder
-for f in [os.path.basename(f) for f in os.listdir(source_absolute) if f.endswith(".css")]:
-    with open(os.path.join(source_absolute, f)) as FO:
-        filecontent = FO.read()
-    for val in gc(): 
-        if val in filecontent:
-            newval = gc(val)
-            if not newval:
-                newval = dc(val)
-            filecontent = filecontent.replace(val, str(newval))
-    Path(web_absolute).mkdir(parents=True, exist_ok=True)
-    with open(os.path.join(web_absolute, f), "w") as FO:
-        FO.write(filecontent)
+jsstring = f"""
+$('head').append('<link rel="stylesheet" type="text/css" href="/_addons/{addonfoldername}/sources/css/41/diffonly__editable.css">');
+$('head').append('<link rel="stylesheet" type="text/css" href="/_addons/{addonfoldername}/sources/css/41/diffonly__editor.css">');
+"""
 
-
-def maybe_adjust_filename_for_2136(filename): 
-    if anki_point_version >= 36: 
-        filename = filename.lstrip("css/") 
-    return filename
-
-
-css_files_to_replace = [os.path.basename(f) for f in os.listdir(web_absolute) if f.endswith(".css")]
-def replace_css(web_content, context):
-    for idx, filename in enumerate(web_content.css):
-        filename = maybe_adjust_filename_for_2136(filename)
-        if filename in css_files_to_replace:
-            web_content.css[idx] = f"/_addons/{addonfoldername}/web/css/{version_folder}/{filename}"
-
-
-gui_hooks.webview_will_set_content.append(replace_css)
+def adjust_css_with_js_after_editor_init(self):
+    self.web.eval(jsstring)
+editor_did_init.append(adjust_css_with_js_after_editor_init)
