@@ -66,9 +66,16 @@ for f in [os.path.basename(f) for f in os.listdir(source_absolute) if f.endswith
         FO.write(filecontent)
 
 
+def maybe_adjust_filename_for_2136(filename): 
+    if anki_point_version >= 36: 
+        filename = filename.lstrip("css/") 
+    return filename
+
+
 css_files_to_replace = [os.path.basename(f) for f in os.listdir(web_absolute) if f.endswith(".css")]
 def replace_css(web_content, context):
     for idx, filename in enumerate(web_content.css):
+        filename = maybe_adjust_filename_for_2136(filename)
         if filename in css_files_to_replace:
             web_content.css[idx] = f"/_addons/{addonfoldername}/web/css/{version_folder}/{filename}"
 
