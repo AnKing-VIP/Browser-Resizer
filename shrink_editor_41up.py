@@ -37,7 +37,7 @@ css_folder_for_anki_version = {
 
 
 if anki_point_version in css_folder_for_anki_version:
-    version_folder = css_folder_for_anki_version[v]
+    version_folder = css_folder_for_anki_version[anki_point_version]
 else:  # for newer Anki versions try the latest version and hope for the best
     version_folder = css_folder_for_anki_version[max(css_folder_for_anki_version, key=int)]
 
