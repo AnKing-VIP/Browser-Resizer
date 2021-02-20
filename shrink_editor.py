@@ -1,17 +1,3 @@
-# Copyright: ijgnd
-#            Ankitects Pty Ltd and contributors
-# Modified by: The AnKing 
-#
-# License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html 
-
-
-### Website: https://www.ankingmed.com  (Includes 40+ recommended add-ons)
-### Youtube: https://www.youtube.com/theanking
-### Instagram/Facebook: @ankingmed
-### Patreon: https://www.patreon.com/ankingmed (Get individualized help)
-
-
-
 # This is a simple solution without the new style hooks for basic changes of the style in the editor:
 # from aqt import editor
 # editor_style = """
