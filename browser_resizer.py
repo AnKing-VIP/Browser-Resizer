@@ -8,14 +8,12 @@ from anki.hooks import wrap
 from aqt.browser import Browser
 from aqt import mw
 
-
-# Use Config to customize
-config = mw.addonManager.getConfig(__name__)
+from .config import gc
 
 
 def setupSidebar_wrapper(self, *_):
     '''Reduce margins between items in Browser Sidebar'''
-    sidebar_margin = config.get("sidebar_margin", None)
+    sidebar_margin = gc("sidebar_margin")
     if not sidebar_margin:
         return
     style = f"QTreeView::item {{margin: -{sidebar_margin}px;}}"
@@ -25,7 +23,7 @@ Browser.setupSidebar = wrap(Browser.setupSidebar, setupSidebar_wrapper)
 
 def updateFont_wrapper(self, *_):
     '''Reduce row height in Browser table view'''
-    reduce_row_height_by = config.get("reduce_row_height_by", None)
+    reduce_row_height_by = gc("reduce_row_height_by")
     if not reduce_row_height_by:
         return
     vh = self.form.tableView.verticalHeader()

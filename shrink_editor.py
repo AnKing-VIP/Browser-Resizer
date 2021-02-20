@@ -26,30 +26,10 @@ from aqt import mw
 from aqt import gui_hooks
 from anki import version as anki_version
 
+from .config import dc, gc
+
 
 _, _, anki_point_version = anki_version.split(".")
-
-
-#config settings
-def gc(arg="", fail=False):
-    conf = mw.addonManager.getConfig(__name__)
-    if conf:
-        if arg:
-            return conf.get(arg, fail)
-        else:
-            return conf
-    return fail
-
-
-def dc(arg="", fail=""):
-    addon = mw.addonManager.addonFromModule(__name__)
-    conf = mw.addonManager.addonConfigDefaults(addon)
-    if conf:
-        if arg:
-            return conf.get(arg, fail)
-        else:
-            return conf
-    return fail
 
 
 css_folder_for_anki_version = {
