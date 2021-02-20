@@ -56,6 +56,7 @@ css_folder_for_anki_version = {
     "22": "22",
     "23": "22",
     "31": "31",  # example: for Anki version 23 use the contents of the folder 22 
+    "41": "41",
 }
 
 
@@ -88,10 +89,16 @@ for f in [os.path.basename(f) for f in os.listdir(source_absolute) if f.endswith
     with open(os.path.join(web_absolute, f), "w") as FO:
         FO.write(filecontent)
 
+from anki.utils import pointVersion 
+def maybe_adjust_filename_for_2136(filename): 
+    if pointVersion() >= 36: 
+        filename = filename.lstrip("css/") 
+    return filename
 
 css_files_to_replace = [os.path.basename(f) for f in os.listdir(web_absolute) if f.endswith(".css")]
 def replace_css(web_content, context):
     for idx, filename in enumerate(web_content.css):
+        filename = maybe_adjust_filename_for_2136(filename)
         if filename in css_files_to_replace:
             web_content.css[idx] = f"/_addons/{addonfoldername}/web/css/{version_folder}/{filename}"
 
@@ -99,3 +106,16 @@ old_anki = tuple(int(i) for i in anki_version.split(".")) < (2, 1, 22)
 
 if not old_anki and gc("editor_shrink"):                    
     gui_hooks.webview_will_set_content.append(replace_css)
+
+
+def load_resize_js(webcontent, context):
+        base_path = f"/_addons/{addonfoldername}/web/css/{version_folder}"
+
+        webcontent.js.append(f"{base_path}/editable.js")
+
+gui_hooks.webview_will_set_content.append(load_resize_js)
+
+def initiate_reize_js(editor):
+    editor.web.eval("BrowserResize.load();")
+
+gui_hooks.editor_did_load_note(initiate_reize_js)
