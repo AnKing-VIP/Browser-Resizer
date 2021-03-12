@@ -1,6 +1,6 @@
 # Copyright: ijgnd
 #            Ankitects Pty Ltd and contributors
-# Modified by: The AnKing 
+# Modified by: The AnKing
 #
 # License: GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.html 
 
