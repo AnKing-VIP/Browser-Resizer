@@ -97,5 +97,5 @@ def replace_css(web_content, context):
 
 old_anki = tuple(int(i) for i in anki_version.split(".")) < (2, 1, 22)
 
-if not old_anki and gc("editor_shrink"):                    
+if not old_anki and gc("editor_shrink"):
     gui_hooks.webview_will_set_content.append(replace_css)
