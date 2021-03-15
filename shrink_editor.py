@@ -25,9 +25,8 @@ import os
 
 from anki.utils import pointVersion
 
-from aqt import mw
-from aqt import gui_hooks
-from anki import version as anki_version
+from aqt import mw, gui_hooks
+from aqt.editor import Editor
 
 
 #config settings
@@ -52,34 +51,11 @@ def dc(arg="", fail=""):
     return fail
 
 
-css_folder_for_anki_version = {
-    "22": "22",
-    "23": "22",
-    "31": "31",
-    "32": "31",
-    "33": "31",
-    "34": "31",
-    "35": "31",
-    "36": "31",
-    "37": "31",
-    "38": "31",
-    "39": "31",
-    "40": "31",
-    "41": "41",  # example: for Anki version 23 use the contents of the folder 22 
-}
-
-
-v = pointVersion()
-if v in css_folder_for_anki_version:
-    version_folder = css_folder_for_anki_version[v]
-else:  # for newer Anki versions try the latest version and hope for the best
-    version_folder = css_folder_for_anki_version[max(css_folder_for_anki_version, key=int)]
-
 
 addon_path = os.path.dirname(__file__)
 addonfoldername = os.path.basename(addon_path)
-source_absolute = os.path.join(addon_path, "sources", "css", version_folder)
-web_absolute = os.path.join(addon_path, "web", "css", version_folder)
+source_absolute = os.path.join(addon_path, "sources", "css")
+web_absolute = os.path.join(addon_path, "web", "css")
 
 regex = r"(web.*)"
 mw.addonManager.setWebExports(__name__, regex)
@@ -101,11 +77,8 @@ for f in [os.path.basename(f) for f in os.listdir(source_absolute) if f.endswith
 
 css_files_to_replace = [os.path.basename(f) for f in os.listdir(web_absolute) if f.endswith(".css")]
 def replace_css(web_content, context):
-    for idx, filename in enumerate(web_content.css):
-        if filename in css_files_to_replace:
-            web_content.css[idx] = f"/_addons/{addonfoldername}/web/css/{version_folder}/{filename}"
+    if isinstance(context, Editor):
+        for filename in css_files_to_replace:
+            web_content.css.append(f"/_addons/{addonfoldername}/web/css/{os.path.basename(filename)}")
 
-old_anki = tuple(int(i) for i in anki_version.split(".")) < (2, 1, 22)
-
-if not old_anki and gc("editor_shrink"):
-    gui_hooks.webview_will_set_content.append(replace_css)
+gui_hooks.webview_will_set_content.append(replace_css)
