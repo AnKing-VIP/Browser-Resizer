@@ -24,7 +24,7 @@ from aqt.editor import Editor
 
 
 # config settings
-def gc(arg="", fail=False):
+def get_config(arg="", fail=False):
     conf = mw.addonManager.getConfig(__name__)
     if conf:
         if arg:
@@ -34,7 +34,7 @@ def gc(arg="", fail=False):
     return fail
 
 
-def dc(arg="", fail=""):
+def default_config(arg="", fail=""):
     addon = mw.addonManager.addonFromModule(__name__)
     conf = mw.addonManager.addonConfigDefaults(addon)
     if conf:
@@ -60,11 +60,11 @@ for f in [
 ]:
     with open(os.path.join(source_absolute, f)) as FO:
         filecontent = FO.read()
-    for val in gc():
+    for val in get_config():
         if val in filecontent:
-            newval = gc(val)
+            newval = get_config(val)
             if not newval:
-                newval = dc(val)
+                newval = default_config(val)
             filecontent = filecontent.replace(val, str(newval))
     with open(os.path.join(web_absolute, f), "w") as FO:
         FO.write(filecontent)
