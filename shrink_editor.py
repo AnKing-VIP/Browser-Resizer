@@ -11,19 +11,15 @@
 ### Patreon: https://www.patreon.com/ankingmed (Get individualized help)
 
 
-# This is a simple solution without the new style hooks for basic changes of the style in the editor:
-# from aqt import editor
-# editor_style = """
-# <style>
-# </style>"""
-# editor._html = editor_style + editor._html
-
-
 import os
 
 from anki.utils import pointVersion
 
-from aqt import mw, gui_hooks
+from aqt import mw
+from aqt.gui_hooks import (
+    webview_will_set_content,
+    editor_did_load_note,
+)
 from aqt.editor import Editor
 
 
@@ -74,17 +70,29 @@ for f in [
         FO.write(filecontent)
 
 
-css_files_to_replace = [
-    os.path.basename(f) for f in os.listdir(web_absolute) if f.endswith(".css")
-]
-
-
 def replace_css(web_content, context):
     if isinstance(context, Editor):
-        for filename in css_files_to_replace:
-            web_content.css.append(
-                f"/_addons/{addonfoldername}/web/css/{os.path.basename(filename)}"
-            )
+        web_content.css.append(
+            f"/_addons/{addonfoldername}/web/css/editor.css"
+        )
 
 
-gui_hooks.webview_will_set_content.append(replace_css)
+webview_will_set_content.append(replace_css)
+
+
+def replace_css_editable(editor):
+    editor.web.eval(f"""
+var styleSheet = document.createElement("link");
+styleSheet.rel = "stylesheet";
+styleSheet.href = "_addons/{addonfoldername}/web/css/editable.css";
+
+forEditorField([], (field) => {{
+    if (!field.hasAttribute("has-browser-resizer")) {{
+        field.editingArea.shadowRoot.appendChild(styleSheet.cloneNode(true))
+        field.setAttribute("has-browser-resizer", "")
+    }}
+}})
+""")
+
+
+editor_did_load_note.append(replace_css_editable)
