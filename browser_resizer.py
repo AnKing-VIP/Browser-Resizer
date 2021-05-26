@@ -5,6 +5,7 @@
 ### Patreon: https://www.patreon.com/ankingmed (Get individualized help)
 
 from anki.hooks import wrap
+from anki.utils import pointVersion
 from aqt.browser import Browser
 from aqt import mw
 
@@ -30,11 +31,17 @@ def updateFont_wrapper(self, *_):
     reduce_row_height_by = config.get("reduce_row_height_by", None)
     if not reduce_row_height_by:
         return
-    vh = self.form.tableView.verticalHeader()
+    if pointVersion() < 45:
+        vh = self.form.tableView.verticalHeader()
+    else:
+        vh = self._view.verticalHeader()
     original_height = vh.defaultSectionSize()
     new_height = original_height - reduce_row_height_by
     vh.setMinimumSectionSize(new_height)
     vh.setDefaultSectionSize(new_height)
 
-
-Browser.updateFont = wrap(Browser.updateFont, updateFont_wrapper, "after")
+if pointVersion() < 45:
+    Browser.updateFont = wrap(Browser.updateFont, updateFont_wrapper, "after")
+else:
+    from aqt.browser.table import Table
+    Table._setup_view = wrap(Table._setup_view, updateFont_wrapper, "after")
