@@ -14,7 +14,9 @@
 
 <div style="color:red;"><b>The editor settings require a restart to apply and will only work on Anki 2.1.22+.</b></div>
 
-- **editor field font size** _("#px" or " " for none)_ Force font size of all notes to this font size
+- **editor field font size** _("#px", or "anki" for Anki's field config values)_ Force font size of all notes to this font size
+- **editor image max height/width** _("#px" or "anki" for none)_ Set the max height/width of images in the editor and browser views
+- **editor image hover or activee** _("hover" or "active")_ Set whether the images increase to 100% size when you hover over them or click them 
 - **editor_shrink** _(true or false)_ Shrink the fields in the editor to make things more compact. This feature only works in Anki 2.1.22+ and requires a restart to apply.
 - **reduce_row_height_by** Changes the row height of cards listed in the main browser screen. A higher number is a smaller margin. Default: 2
 - **sidebar_margin**: Changes the margin between items on the sidebar in the browser. A higher number is a smaller margin. Default: 1 (must be increments of .5)

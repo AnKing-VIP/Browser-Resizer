@@ -1,0 +1,11 @@
+#fields {
+  margin: 0;
+}
+
+.fname {
+  line-height: 0.8;
+}
+
+.fieldname {
+  font-size: 12px;
+}

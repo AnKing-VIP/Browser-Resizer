@@ -1,0 +1,15 @@
+anki-editable {
+  padding: 4px 4px;
+  font-size: editor field font size !important;
+}
+
+anki-editable img {
+  max-height: editor image max height ;
+  max-width: editor image max width ;
+}
+
+anki-editable img:editor image hover or active {
+  max-height: 2000px;
+  max-width: 2000px;
+  width: 100%;
+}
