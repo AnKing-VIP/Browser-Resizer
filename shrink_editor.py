@@ -77,7 +77,8 @@ def replace_css(web_content, context):
         )
 
 
-webview_will_set_content.append(replace_css)
+if get_config("editor_shrink", False):
+    webview_will_set_content.append(replace_css)
 
 
 def replace_css_editable(editor):
