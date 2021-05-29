@@ -6,8 +6,8 @@
 
 from anki.hooks import wrap
 from aqt.browser import Browser
+from aqt.browser.table import Table
 from aqt import mw
-from anki.utils import pointVersion
 
 
 # Use Config to customize
@@ -26,16 +26,16 @@ def setupSidebar_wrapper(self, *_):
 Browser.setupSidebar = wrap(Browser.setupSidebar, setupSidebar_wrapper)
 
 
-def updateFont_wrapper(self, *_):
+def update_font_wrapper(self, *_):
     """Reduce row height in Browser table view"""
     reduce_row_height_by = config.get("reduce_row_height_by", None)
     if not reduce_row_height_by:
         return
-    vh = self.form.tableView.verticalHeader()
+    vh = self._view.verticalHeader()
     original_height = vh.defaultSectionSize()
     new_height = original_height - reduce_row_height_by
     vh.setMinimumSectionSize(new_height)
     vh.setDefaultSectionSize(new_height)
 
-if pointVersion() < 45: 
-    Browser.updateFont = wrap(Browser.updateFont, updateFont_wrapper, "after")
+
+Table._update_font = wrap(Table._update_font, update_font_wrapper, "after")
