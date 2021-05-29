@@ -1,5 +1,5 @@
 anki-editable {
-  padding: 4px 4px;
+  padding: editor field padding !important;
   font-size: editor field font size !important;
 }
 
