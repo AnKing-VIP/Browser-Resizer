@@ -50,10 +50,6 @@ addonfoldername = os.path.basename(addon_path)
 source_absolute = os.path.join(addon_path, "sources", "css")
 web_absolute = os.path.join(addon_path, "web", "css")
 
-regex = r"(web.*)"
-mw.addonManager.setWebExports(__name__, regex)
-
-
 # on startup: combine template files with config and write into webexports folder
 for f in [
     os.path.basename(f) for f in os.listdir(source_absolute) if f.endswith(".css")
