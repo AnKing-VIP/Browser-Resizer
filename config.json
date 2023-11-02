@@ -1,5 +1,6 @@
 {
   "editor field font size": "anki",
+  "editor field padding": "0px 2px",
   "editor image max height": "300px",
   "editor image max width": "300px",
   "editor image hover or active": "hover",
