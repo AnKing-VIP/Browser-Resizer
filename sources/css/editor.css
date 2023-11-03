@@ -1,8 +1,8 @@
-#fields {
+.fields {
   margin: 0;
 }
 
-.fieldname {
+.label-name {
   font-size: 12px;
   line-height: 1.3;
 }
