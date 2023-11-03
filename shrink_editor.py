@@ -78,18 +78,20 @@ if get_config("editor_shrink", False):
 
 
 def replace_css_editable(editor):
-    editor.web.eval(f"""
-var styleSheet = document.createElement("link");
-styleSheet.rel = "stylesheet";
-styleSheet.href = "_addons/{addonfoldername}/web/css/editable.css";
-
-forEditorField([], (field) => {{
-    if (!field.hasAttribute("has-browser-resizer")) {{
-        field.editingArea.shadowRoot.appendChild(styleSheet.cloneNode(true))
-        field.setAttribute("has-browser-resizer", "")
-    }}
-}})
-""")
+    editor.web.eval("""
+setTimeout(() => {
+    var styleSheet = document.createElement("link");
+    styleSheet.rel = "stylesheet";
+    styleSheet.href = "_addons/%s/web/css/editable.css";
+    require("anki/NoteEditor").instances[0].fields.forEach(async (field) => {
+        const editable = (await field.element).querySelector(".rich-text-editable");
+        if (!editable.hasAttribute("has-browser-resizer")) {{
+            editable.shadowRoot.appendChild(styleSheet.cloneNode(true))
+            editable.setAttribute("has-browser-resizer", "")
+        }}
+    })
+}, 100);
+""" % addonfoldername)
 
 
 editor_did_load_note.append(replace_css_editable)
