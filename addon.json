@@ -1,0 +1,14 @@
+{
+    "display_name": "Browser Resizer",
+    "module_name": "browser_resizer",
+    "repo_name": "Browser-Resizer",
+    "ankiweb_id": "1435775540",
+    "author": "The AnKing",
+    "conflicts": [],
+    "targets": [
+        "anki21"
+    ],
+    "min_anki_version" : "2.1.50",
+    "max_tested_anki_version" : "23.10",
+    "ankiweb_conflicts_with_local": true
+}
