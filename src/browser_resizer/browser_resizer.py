@@ -20,8 +20,8 @@ def setupSidebar_wrapper(self, *_):
     if not sidebar_margin:
         return
     style = f"QTreeView::item {{margin: -{sidebar_margin}px;}}"
-    self.sidebarTree.setStyleSheet(style)
 
+    self.sidebarTree.setStyleSheet(self.sidebarTree.styleSheet() + style)
 
 Browser.setupSidebar = wrap(Browser.setupSidebar, setupSidebar_wrapper)
 
