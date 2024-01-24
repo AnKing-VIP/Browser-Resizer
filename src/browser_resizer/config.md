@@ -18,6 +18,8 @@
 - **editor field padding** _("#px", or "anki" for Anki's field config values)_ Set the amount of padding for editor fields. You can specify
 four (top, right, bottom, left), two (top/bottom, right/left) or one (uniform padding) value.
 - **editor_shrink** _(true or false)_ Shrink the fields in the editor to make things more compact. This feature only works in Anki 2.1.22+ and requires a restart to apply.
+- **editor button font size** Set the font size of the editor's toolbar buttons
+- **editor button size** Set the height of the editor's toolbar buttons. You probably want to adjust **editor button font size** too for better appearance.
 - **reduce_row_height_by** Changes the row height of cards listed in the main browser screen. A higher number is a smaller margin. Default: 2
 - **sidebar_margin**: Changes the margin between items on the sidebar in the browser. A higher number is a smaller margin. Default: 1 (must be increments of .5)
 
