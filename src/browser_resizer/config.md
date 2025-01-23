@@ -1,4 +1,4 @@
-<center><div style="vertical-align:middle;"><a href="https://www.ankingmed.com"><img src="/_addons/1435775540/AnKing/AnKingSmall.png"></a><a href="https://www.ankingmed.com"><img src="/_addons/1435775540/AnKing/TheAnKing.png"></a></div></center>
+<center><div style="vertical-align:middle;"><a href="https://www.theanking.com"><img src="/_addons/1435775540/AnKing/TheAnKing.png"></a></div></center>
 
 <center><a href="https://www.facebook.com/ankingmed"><img src="/_addons/1435775540/AnKing/Facebook.jpg"></a>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.instagram.com/ankingmed"><img src="/_addons/1435775540/AnKing/Instagram.jpg"></a>
